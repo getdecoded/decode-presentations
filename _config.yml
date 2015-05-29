@@ -1,0 +1,79 @@
+# Title, decription, tagline and URL for your site
+# Can be used in your theme by calling 'site.title' and so on
+title: Decode
+description: Home for the Decode project
+tagline: Anyone Can Make Software
+url: http://localhost:3000
+
+# Used so Jekyll outputs the site correctly so Gulp can do what it wants
+source: src
+destination: serve
+
+# Same as the title etc for your site but can instead be
+# called by using 'site.author.name' and so on
+author:
+  name: Christian Silver
+  email: christian@decode.org.nz
+  bio:
+  twitter: http://twitter.com/pinpickle
+
+# general setting for Jekyll
+google_analytics: UA-43168673-1
+
+# _config.build.yml overwrites these options when you run `gulp build`
+# Enables future posts (posts with dates in the future) and drafts
+future: true
+show_drafts: true
+# Disables the more accurate related posts for faster generating of the site
+lsi: false
+# Only make the last 10 posts so generating isn't slow
+limit_posts: 10
+
+# Permalink structure and pagination options
+relative_permalinks: true
+permalink: pretty
+# paginate: 10
+paginate_path: 'page:num'
+excerpt_separator: '<!--more-->'
+
+# Exclude directories
+exclude: [assets, bower]
+keep_files: [assets]
+
+# Collection settings
+collections:
+  lessons:
+    output: true
+    permalink: /learn/:path/
+  lesson_collections:
+    output: true
+    permalink: /learn/:path/
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: 'default'
+      image: '/assets/img/kids-on-pi.jpg'
+  - scope:
+      path: ''
+      type: 'lesson_collections'
+    values:
+      layout: 'lesson_collection'
+  - scope:
+      path: ''
+      type: 'lessons'
+    values:
+      layout: 'lesson'
+
+gems:
+  - jekyll-sitemap
+
+# Markdown library
+markdown: redcarpet
+# Markdown library options
+redcarpet:
+  extensions: ['no_intra_emphasis', 'tables', 'fenced_code_blocks', 'autolink', 'smart',
+              'strikethrough', 'superscript', 'underline', 'highlight', 'footnotes']
+highlighter: pygments
