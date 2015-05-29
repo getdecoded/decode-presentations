@@ -1,8 +1,6 @@
 # Title, decription, tagline and URL for your site
 # Can be used in your theme by calling 'site.title' and so on
-title: Decode
-description: Home for the Decode project
-tagline: Anyone Can Make Software
+title: Decode Presentations
 url: http://localhost:3000
 
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
@@ -30,7 +28,6 @@ lsi: false
 limit_posts: 10
 
 # Permalink structure and pagination options
-relative_permalinks: true
 permalink: pretty
 # paginate: 10
 paginate_path: 'page:num'
@@ -42,33 +39,17 @@ keep_files: [assets]
 
 # Collection settings
 collections:
-  lessons:
+  presentations:
     output: true
-    permalink: /learn/:path/
-  lesson_collections:
-    output: true
-    permalink: /learn/:path/
+    permalink: /:path
 
 # Front matter defaults
 defaults:
   - scope:
       path: ''
+      type: 'presentations'
     values:
-      layout: 'default'
-      image: '/assets/img/kids-on-pi.jpg'
-  - scope:
-      path: ''
-      type: 'lesson_collections'
-    values:
-      layout: 'lesson_collection'
-  - scope:
-      path: ''
-      type: 'lessons'
-    values:
-      layout: 'lesson'
-
-gems:
-  - jekyll-sitemap
+      layout: 'presentation'
 
 # Markdown library
 markdown: redcarpet

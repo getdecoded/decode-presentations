@@ -23,26 +23,14 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <meta name="description" content="{{ description }}" />
   <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ description }}" />
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  <meta property="og:image" content="{% assign imagechar = page.image | slice:0,1 %}{% if imagechar == '/' %}{{ site.url }}{% endif %}{{ page.image }}" />
 
   <!-- CSS -->
-  <!-- build:css /assets/stylesheets/main.min.css -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <!-- endbuild -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  {% if page.layout == "presentation" %}
+  <link rel="stylesheet" href="{{ page.asset_path }}/main.css" />
+  {% endif %}
 
   <script src="//use.typekit.net/dyi4qaj.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-  <!-- Icons -->
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" href="/assets/img/icons/apple-touch-icon-152x152.png">
-  <meta name="msapplication-TileColor" content="#2d89ef">
-  <meta name="msapplication-TileImage" content="/assets/img/icons/mstile-144x144.png">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 </head>
