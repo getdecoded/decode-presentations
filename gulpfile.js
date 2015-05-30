@@ -23,6 +23,8 @@ var reload = browserSync.reload;
 // Other modules
 var del = require('del');
 var spawn = require('child_process').spawn;
+var glob = require('glob');
+var argv = require('yargs').argv;
 
 var onError = function (err) {
     console.log(err.message);
@@ -193,6 +195,30 @@ gulp.task('serve:prod', function () {
     }
   });
 });
+
+/**
+ * Rebuilding of presentation assets
+ */
+var presentationPath = argv.pres;
+
+gulp.task('presentation-scripts', function () {
+});
+
+gulp.task('presentation-styles', function () {
+});
+
+gulp.task('presentation-build', function () {
+});
+
+gulp.task('presentation-build:all', function () {
+  // Get all files
+  // Build them all
+});
+
+gulp.task('presentation-watch', function () {
+});
+
+
 
 /**
  * Depoyment
