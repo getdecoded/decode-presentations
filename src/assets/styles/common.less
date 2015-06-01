@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Common Stuff
+   ========================================================================== */
+
+.full-slide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vertical-centre {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+/* Starter Slide
+   ========================================================================== */
+.starter-slide {
+  .full-slide;
+
+  color: @brand-white;
+
+  background-color: @brand-primary;
+
+  .main-heading {
+    .vertical-centre;
+    .full-width;
+    .centre;
+  }
+}

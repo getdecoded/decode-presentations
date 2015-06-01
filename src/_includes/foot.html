@@ -2,6 +2,9 @@
 {% if page.type == 'old-video' %}<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>{% endif %}
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBtSLfYXitdE1fdTEsFsgXb1eyCIu65MU&sensor=true"></script>
 <script src="/assets/js/main.js"></script>
+{% if page.layout == "presentation" %}
+  <script src="/assets/presentations/{{ page.asset_path }}/main.js"></script>
+{% endif %}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

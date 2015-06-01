@@ -42,7 +42,10 @@ gulp.task('clean:scripts', function (cb) {
 
 gulp.task('scripts', ['clean:scripts'], function () {
   return scriptsPipe(
-    browserify('./src/assets/scripts/main.js'),
+    browserify('./src/assets/scripts/main.js')
+      .require('./src/assets/scripts/main.js')
+      .require('jquery')
+      .require('debut'),
     'serve/assets/js'
   );
 });
@@ -63,7 +66,7 @@ gulp.task('clean:styles', function (cb) {
 
 gulp.task('styles', ['clean:styles'], function () {
   return stylePipe(
-    gulp.src(['src/assets/styles/main.less', 'src/assets/styles/sandbox-output.less']),
+    gulp.src(['src/assets/styles/main.less']),
     'serve/assets/css/'
   );
 });
@@ -219,7 +222,10 @@ var presentationPath = argv.pres;
 
 function presentationScript(presPath) {
   return scriptsPipe(
-    browserify(path.join('src/_presentations', presPath, 'main.js')),
+    browserify(path.join('src/_presentations', presPath, 'main.js'))
+      .external('./src/assets/scripts/main.js')
+      .external('jquery')
+      .external('debut'),
     path.join('serve/assets/presentations/', presPath)
   );
 }

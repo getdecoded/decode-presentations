@@ -1,0 +1,97 @@
+/* ==========================================================================
+   CSS Typography
+   ========================================================================== */
+
+/* Base Styles
+   ========================================================================== */
+
+html {
+  font-family: @font-body;
+  color: @text-colour;
+}
+
+body {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.margin-element {
+  margin: @punit / 2 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Body Copy
+   ========================================================================== */
+
+h1 { font-size: 2em;       /* 2*16 = 32 */         }
+h2 { font-size: 1.5em;     /* 1.5*16 = 24 */       }
+h3 { font-size: 1.17em;    /* 1.17*16 = 18.72 */   }
+h4 { font-size: 1em;       /* 1*16 = 16 */         }
+h5 { font-size: 0.83em;    /* 0.83*16 = 13.28 */   }
+h6 { font-size: 0.75em;    /* 0.75*16 = 12 */      }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @font-heading;
+
+  line-height: 1.2;
+
+  &:extend(.margin-element all);
+  margin-top: 1em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  & .small {
+    font-size: 0.8em;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}
+
+h1, h2, h3 {
+  font-weight: lighter;
+}
+
+.grand-heading {
+  font-size: 3em;
+}
+
+p, ul, ol {
+  &:extend(.margin-element all);
+}
+
+.emphasis-paragraph, .mild-emphasis-paragraph {
+  font-size: 1.1em;
+}
+
+/* Anchors
+   ========================================================================== */
+
+a, a:visited {
+  text-decoration: none;
+  color: @link-colour;
+  font-weight: bold;
+}
+
+a:hover {
+  color: @link-hover-colour;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Utility
+   ========================================================================== */
+.centre, .center {
+  text-align: center;
+}
