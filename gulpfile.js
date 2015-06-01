@@ -41,14 +41,20 @@ gulp.task('clean:scripts', function (cb) {
 });
 
 gulp.task('scripts', ['clean:scripts'], function () {
-  return browserify('./src/assets/scripts/main.js')
+  return scriptsPipe(
+    browserify('./src/assets/scripts/main.js'),
+    'serve/assets/js'
+  );
+});
+
+function scriptsPipe(browse, dest) {
+  return browse
     .bundle()
     .on('error', onError)
     .pipe(source('main.js'))
-    .pipe(gulp.dest('serve/assets/js'))
+    .pipe(gulp.dest(dest))
     .pipe(reload({stream: true}));
-
-});
+}
 
 // Building the CSS files
 gulp.task('clean:styles', function (cb) {
@@ -56,8 +62,14 @@ gulp.task('clean:styles', function (cb) {
 });
 
 gulp.task('styles', ['clean:styles'], function () {
-  // Looks at the style.scss file for what to include and creates a style.css file
-  return gulp.src(['src/assets/styles/main.less', 'src/assets/styles/sandbox-output.less'])
+  return stylePipe(
+    gulp.src(['src/assets/styles/main.less', 'src/assets/styles/sandbox-output.less']),
+    'serve/assets/css/'
+  );
+});
+
+function stylePipe(pipe, dest) {
+  return pipe
     .pipe($.plumber({
       errorHandler: onError
     }))
@@ -67,12 +79,12 @@ gulp.task('styles', ['clean:styles'], function () {
     // AutoPrefix your CSS so it works between browsers
     .pipe($.autoprefixer('last 1 version', { cascade: true }))
     // Directory your CSS file goes to
-    .pipe(gulp.dest('serve/assets/css/'))
+    .pipe(gulp.dest(dest))
     // Outputs the size of the CSS file
     .pipe($.size({title: 'styles'}))
     // Injects the CSS changes to your browser since Jekyll doesn't rebuild the CSS
     .pipe(reload({stream: true}));
-});
+}
 
 // Moving images over
 gulp.task('images', function () {
@@ -120,7 +132,7 @@ gulp.task('clean:build', function (cb) {
   del(['serve/assets'], cb);
 });
 
-gulp.task('all-assets', ['scripts', 'styles', 'images', 'assets'], function () { });
+gulp.task('all-assets', ['scripts', 'styles', 'images', 'assets', 'presentation-build:all'], function () { });
 
 gulp.task('optimise', function () {
   var revAll = new $.revAll({
@@ -164,6 +176,10 @@ gulp.task('watch', function () {
   gulp.watch(['src/assets/scripts/**'], ['scripts']);
   gulp.watch(['src/assets/images/**'], ['images']);
   gulp.watch(assetsPath, ['assets']);
+
+  if (presentationPath) {
+    sequence('presentation-watch');
+  }
 });
 
 gulp.task('serve', function () {
@@ -201,21 +217,55 @@ gulp.task('serve:prod', function () {
  */
 var presentationPath = argv.pres;
 
+function presentationScript(presPath) {
+  return scriptsPipe(
+    browserify(path.join('src/_presentations', presPath, 'main.js')),
+    path.join('serve/assets/presentations/', presPath)
+  );
+}
+
+function presentationStyle(presPath) {
+  return stylePipe(
+    gulp.src(path.join('src/_presentations', presPath, 'main.less')),
+    path.join('serve/assets/presentations/', presPath)
+  );
+}
+
 gulp.task('presentation-scripts', function () {
+  return presentationScript(presentationPath);
 });
 
 gulp.task('presentation-styles', function () {
+  return presentationStyle(presentationPath);
 });
 
-gulp.task('presentation-build', function () {
-});
+gulp.task('presentation-build', ['presentation-scripts', 'presentation-styles'], function () { });
 
 gulp.task('presentation-build:all', function () {
-  // Get all files
-  // Build them all
+  var styles = glob.sync('src/_presentations/**/main.less');
+  var scripts = glob.sync('src/_presentations/**/main.js');
+
+  var styleStreams = styles.map(function (style) {
+    var path = style.replace('src/_presentations/', '').replace('/main.less', '');
+    console.log(path);
+    return presentationStyle(path);
+  });
+
+  var scriptStreams = scripts.map(function (script) {
+    var path = script.replace('src/_presentations/', '').replace('/main.js', '');
+    console.log(path);
+    return presentationScript(path);
+  });
+
+  var stylesStream = merge.apply(merge, styleStreams);
+  var scriptsStream = merge.apply(merge, scriptStreams);
+
+  return merge(styleStreams, scriptsStream);
 });
 
-gulp.task('presentation-watch', function () {
+gulp.task('presentation-watch', ['presentation-build'], function () {
+  gulp.watch(path.join('src/_presentations', presentationPath, '**/*.js'), ['presentation-scripts']);
+  gulp.watch(path.join('src/_presentations', presentationPath, '**/*.less'), ['presentation-styles']);
 });
 
 
