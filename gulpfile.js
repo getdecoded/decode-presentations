@@ -77,7 +77,7 @@ function stylePipe(pipe, dest) {
       errorHandler: onError
     }))
     .pipe($.less({
-      paths: ['./node_modules']
+      paths: ['./node_modules', './src/assets/styles']
     }))
     // AutoPrefix your CSS so it works between browsers
     .pipe($.autoprefixer('last 1 version', { cascade: true }))
@@ -172,7 +172,7 @@ gulp.task('publish', ['clean:full-build'], function() {
  * Watching and reloading
  */
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*', '!src/assets/**/*', '!src/bower/**/*'], function () {
+  gulp.watch(['src/**/*', '!src/**/*.less', '!src/**/*.js', '!src/assets/**/*', '!src/bower/**/*'], function () {
     sequence('jekyll:dev', reload);
   });
   gulp.watch(['src/assets/styles/**'], ['styles']);

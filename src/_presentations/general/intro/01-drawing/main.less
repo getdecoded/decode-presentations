@@ -1,0 +1,112 @@
+@import 'settings';
+
+/* Circles
+   ========================================================================== */
+
+.complexity-circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+
+  border-radius: 50%;
+  background-color: hsl(200, 80%, 80%);
+
+  transition: background-color 1s;
+
+  &.first-circle {
+    z-index: 1;
+  }
+
+  .cycling & {
+    animation-name: colour-cycle;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+.complexity-circle:nth-child(3n) {
+  animation-delay: 1s;
+}
+
+.complexity-circle:nth-child(4n + 1) {
+  animation-delay: 2s;
+}
+
+.complexity-circle:nth-child(5n + 2) {
+  animation-delay: 3s;
+}
+
+/* Instructions
+   ========================================================================== */
+
+.instructions-text {
+  z-index: 5;
+}
+
+.instructions-example {
+  background: @brand-dark-grey;
+  z-index: 10;
+}
+
+.instructions-robot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -30px;
+  margin-left: -30px;
+
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+
+  background-color: #253c9f;
+
+  border: 3px solid @brand-white;
+}
+
+.instructions-token {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -10px;
+
+  width: 20px;
+  height: 20px;
+
+  background-color: @brand-white;
+  border-radius: 50%;
+}
+
+.instructions {
+  position: absolute;
+  left: @punit;
+  top: @punit;
+
+  width: 400px;
+}
+
+.instructions-group {
+  transition-property: padding, background;
+  transition-duration: 0.5s;
+
+  &.looped {
+    padding: @punit;
+    background: @brand-grey;
+  }
+}
+
+.time-to-code {
+  background: @brand-dark-grey;
+  z-index: 15;
+}
+
+@keyframes colour-cycle {
+  0%, 100% { background-color: hsl(200, 80%, 80%); }
+  50% { background-color: hsl(200, 50%, 50%); }
+}

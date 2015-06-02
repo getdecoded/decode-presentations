@@ -2,6 +2,10 @@
    Common Stuff
    ========================================================================== */
 
+.debut-container-inner {
+  background: #efefef;
+}
+
 .full-slide {
   position: absolute;
   left: 0;
@@ -16,8 +20,32 @@
   transform: translate(0, -50%);
 }
 
+.horizontal-centre {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.full-centre {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .full-width {
   width: 100%;
+}
+
+.centre-text {
+  .vertical-centre;
+  .full-width;
+  .centre;
+}
+
+.big-text {
+  .centre-text;
+  .grand-heading;
 }
 
 
@@ -34,5 +62,10 @@
     .vertical-centre;
     .full-width;
     .centre;
+  }
+
+  .main-logo {
+    .full-centre;
+    width: 300px;
   }
 }

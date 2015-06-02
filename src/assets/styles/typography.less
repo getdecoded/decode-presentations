@@ -16,7 +16,7 @@ body {
 }
 
 .margin-element {
-  margin: @punit / 2 0;
+  // margin: @punit / 2 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 
   &:extend(.margin-element all);
-  margin-top: 1em;
+  // margin-top: 1em;
 
   &:first-child {
     margin-top: 0;
@@ -61,6 +61,7 @@ h1, h2, h3 {
 }
 
 .grand-heading {
+  font-weight: lighter;
   font-size: 3em;
 }
 
@@ -70,6 +71,10 @@ p, ul, ol {
 
 .emphasis-paragraph, .mild-emphasis-paragraph {
   font-size: 1.1em;
+}
+
+.light-text {
+  color: @brand-white;
 }
 
 /* Anchors
