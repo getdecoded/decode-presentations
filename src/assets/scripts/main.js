@@ -4,7 +4,9 @@ var presentationElement = $('.presentation');
 var Decode = { };
 
 if (presentationElement.length > 0) {
-  Decode.presentation = new Debut(presentationElement[0]);
+  Decode.presentation = new Debut(presentationElement[0], {
+    presenterUrl: '/presenter.html'
+  });
 }
 
 Decode.addStarter = function addStarter() {
