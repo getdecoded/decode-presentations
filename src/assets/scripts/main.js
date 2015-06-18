@@ -6,7 +6,8 @@ var Decode = { };
 if (presentationElement.length > 0) {
   Decode.presentation = new Debut(presentationElement[0], {
     presenterUrl: '/presenter.html',
-    clickToProceed: false
+    clickToProceed: false,
+    focusFlash: false
   });
 }
 
