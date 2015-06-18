@@ -1,0 +1,80 @@
+@import 'settings';
+.slide-interactive {
+  background: @brand-dark-grey;
+}
+
+.interactive-button {
+  .left-button, .right-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
+    border-radius: 50%;
+
+    background: #c7d93d;
+
+    line-height: 120px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.15);
+
+    transition: transform 0.1s;
+  }
+
+  .left-button {
+    left: calc(~'50% - 200px');
+    background: #1ca527;
+    box-shadow: -5px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .right-button {
+    left: calc(~'50% + 200px');
+    background: #955527;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    .right-button {
+      transform: scale(1.2);
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .left-button {
+      transform: scale(0.8);
+      box-shadow: -2px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.emit-ball {
+  position: absolute;
+  top: 50%;
+  left: calc(~'50% + 200px');
+  z-index: -1;
+
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+
+  background: #d1d1d1;
+
+  animation: goUp 1s 1;
+}
+
+.time-to-code {
+  background-color: #4a9181;
+}
+
+@keyframes goUp {
+  0% { transform: translate(0, -40px); }
+  100% { transform: translate(0, -600px); }
+}
