@@ -43,5 +43,3 @@ addTag('.css-semicolon');
 
 Decode.presentation
   .step('.css-example', 'appear', { reverse: true })
-
-Decode.presentation.goTo('html');
