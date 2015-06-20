@@ -5,9 +5,13 @@ var $ = require('jquery');
 var snippet = $('.code-snippet');
 lines = snippet.text().split('\n');
 snippet.html('');
-lines.forEach(function (line) {
+lines.forEach(function (line, i) {
   if (line == '') {
-    line = '&nbsp;'
+    if (i === lines.length - 1) {
+      return;
+    }
+
+    line = '&nbsp;';
   }
   snippet.append($('<div>').html(line));
 });
@@ -58,8 +62,6 @@ addSnippets(14, 9);
 addSnippets(20, 14);
 
 Decode.presentation.step('.slide-interactive', 'slide', { from: 'right' }).milestone('events');
-
-Decode.presentation.goTo('events');
 
 var emit = false;
 Decode.presentation.step(function (context, callback) { emit = !context.reversed; callback(); });
