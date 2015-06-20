@@ -28,18 +28,3 @@ Decode.presentation
 addTag('.html-self-tag-name', true);
 addTag('.html-attr');
 addTag('.html-attr-value');
-
-
-Decode.presentation
-  .step('.html-example', 'appear', { reverse: true })
-  .step('.css-example', 'appear')
-  .milestone('css');
-
-addTag('.css-selector', true);
-addTag('.css-property');
-addTag('.css-colon');
-addTag('.css-value');
-addTag('.css-semicolon');
-
-Decode.presentation
-  .step('.css-example', 'appear', { reverse: true })

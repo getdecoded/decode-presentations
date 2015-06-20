@@ -7,7 +7,8 @@ if (presentationElement.length > 0) {
   Decode.presentation = new Debut(presentationElement[0], {
     presenterUrl: '/presenter.html',
     clickToProceed: false,
-    focusFlash: false
+    focusFlash: false,
+    baseWidth: 1920
   });
 }
 

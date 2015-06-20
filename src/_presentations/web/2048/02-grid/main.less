@@ -1,0 +1,148 @@
+@indicate-col: #ac87ff;
+
+.grid-example {
+  z-index: -1;
+  perspective: 1500px;
+  background: #efefef;
+}
+
+.grid-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  height: 800px;
+
+  background: #dbdbdb;
+  padding: 8px;
+  border-radius: 8px;
+
+  transition: 1s transform, 0.3s border-color;
+  transform: translate(-50%, -50%);
+
+  .extra-view & {
+    transform: translate(-50%, -50%) rotate3d(.4, -1, 0, 45deg) translate3d(0, 0, -30px);
+  }
+
+  .show-grid & {
+    border-color: @indicate-col;
+  }
+
+  border: 2px solid #efefef;
+}
+
+.grid-row {
+  height: 25%;
+}
+
+.grid-item {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: left;
+  box-sizing: border-box;
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
+    border-radius: 8px;
+
+    background: #ebebeb;
+    border: 2px solid transparent;
+
+    transition: 0.3s border-color;
+  }
+
+  .show-item &:before {
+    border-color: @indicate-col;
+  }
+}
+
+.tile-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  height: 800px;
+
+  transform: translate(-50%, -50%);
+
+  transition: 1s transform;
+
+  .extra-view & {
+    transform: translate(-50%, -50%) rotate3d(.4, -1, 0, 45deg) translate3d(0, 0, 30px);
+  }
+}
+
+.tile-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 25%;
+  height: 25%;
+  padding: 4px;
+  box-sizing: border-box;
+
+  &:before {
+    content: ' ';
+    display: block;
+    height: 100%;
+    border-radius: 8px;
+    background: #aed35b;
+  }
+
+  animation: 4s tile-swipe ease infinite;
+
+  outline: 1px solid transparent;
+
+  &.alternate {
+    animation-delay: -2s;
+  }
+}
+
+.row-separator {
+  position: absolute;
+  right: 8px;
+  left: 8px;
+  margin-top: -1px;
+
+  border-bottom: 2px solid @indicate-col;
+
+  opacity: 0;
+
+  transition: 0.3s opacity;
+
+  .show-row & {
+    opacity: 1;
+  }
+}
+
+@keyframes tile-swipe {
+  97%, 0%, 100%, 3%, { transform: translate(200px, 200px); }
+  22%, 28% { transform: translate(400px, 200px); }
+  47%, 54% { transform: translate(400px, 400px); }
+  72%, 78% { transform: translate(200px, 400px); }
+}
+
+// CSS Example
+
+.css-example {
+  background: #efefef;
+}
+
+.big-code {
+  display: inline-block;
+  text-align: left;
+  font-size: 3.5em;
+  font-weight: lighter;
+
+  span.code-emphasis {
+    font-weight: 600;
+    color: #365a83;
+  }
+}
