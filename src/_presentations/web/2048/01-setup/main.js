@@ -1,4 +1,4 @@
-var Decode = require('./src/assets/scripts/main.js');
+var Decode = window.decode;
 var $ = require('jquery');
 
 Decode.addStarter();

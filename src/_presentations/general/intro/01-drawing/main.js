@@ -1,4 +1,4 @@
-var Decode = require('./src/assets/scripts/main.js');
+var Decode = window.decode;
 var $ = require('jquery');
 
 Decode.addStarter();
@@ -111,9 +111,3 @@ Decode.presentation.milestone('Instructions')
     .and('.instructions', 'slide', { from: 'bottom', reverse: true })
   .step('.grammar', changeGrammar, { duration: 0 })
   .step('.time-to-code', 'appear');
-
-
-
-
-
-

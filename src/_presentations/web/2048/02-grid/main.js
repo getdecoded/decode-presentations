@@ -1,4 +1,4 @@
-var Decode = require('./src/assets/scripts/main.js');
+var Decode = window.decode;
 var $ = require('jquery');
 
 Decode.addStarter();
@@ -34,9 +34,3 @@ Decode.presentation
   .step('.grid-example', 'toggleclass', { class: 'show-row' })
   .step('.grid-example', 'toggleclass', { class: 'show-item' })
   .step('.grid-example', 'slide', { from: 'left', reverse: true });
-
-
-
-
-
-Decode.presentation.goTo('board');

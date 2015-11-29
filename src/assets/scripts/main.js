@@ -18,5 +18,6 @@ Decode.addStarter = function addStarter() {
     .and('.starter-slide .main-logo', 'fade');
 };
 
+
 module.exports = Decode;
 window.decode = Decode;
