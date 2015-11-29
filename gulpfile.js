@@ -138,8 +138,10 @@ gulp.task('clean:build', function (cb) {
 gulp.task('all-assets', ['scripts', 'styles', 'images', 'assets', 'presentation-build:all'], function () { });
 
 gulp.task('optimise', function () {
+  var dont = ['.html', '.xml', /^\/assets\/files\//, '.txt'];
   var revAll = new $.revAll({
-    dontRenameFile: ['.html', '.xml', /^\/assets\/files\//, '.txt']
+    dontRenameFile: dont,
+    dontUpdateReference: dont
   });
 
   return gulp.src('serve/**')
@@ -345,7 +347,3 @@ gulp.task('deploy', function () {
 gulp.task('default', function () {
   sequence('build', 'watch', 'serve');
 });
-
-
-
-
