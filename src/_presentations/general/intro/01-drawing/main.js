@@ -14,8 +14,8 @@ for (var i = 0; i < rows; i ++) {
   for (var n = 0; n < cols; n ++) {
     var circle = $('<div class="complexity-circle"></div>').appendTo($('.computer-mystery'));
     circle.css({
-      x: (n - (cols - 1) / 2) * 80,
-      y: (i - (rows - 1) / 2) * 80,
+      x: (n - (cols - 1) / 2) * 160,
+      y: (i - (rows - 1) / 2) * 160,
       scale: 0
     });
 
@@ -60,18 +60,18 @@ Decode.presentation
 
 // Instructions
 var topRight = {
-  x: 200,
-  y: -100
+  x: 400,
+  y: -200
 };
 
 var bottomLeft = {
-  x: -150,
-  y: 150
+  x: -300,
+  y: 300
 };
 
 var middleRight = {
-  x: 100,
-  y: 40
+  x: 200,
+  y: 80
 };
 
 $('.instructions-token.top-right').css(topRight);
@@ -105,7 +105,7 @@ Decode.presentation.milestone('Instructions')
     .then('.instructions-robot', 'animatecss', { props: { x: middleRight.x, y: middleRight.y } })
     .then('.instructions-token.middle-right', 'fade', { reverse: true })
   .step('.instructions-robot, .instructions-example .example-text', 'slide', { reverse: true })
-    .and('.instructions', 'animatecss', { props: { x: 150, y: 100, scale: 1.5 } })
+    .and('.instructions', 'animatecss', { props: { x: 300, y: 200, scale: 1.5 } })
   .milestone('Instructions Over')
   .step('.grammar-slide', 'slide', { from: 'top' })
     .and('.instructions', 'slide', { from: 'bottom', reverse: true })
