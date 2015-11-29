@@ -12,6 +12,6 @@ title: Decode Presentations
 - [Prepare to make 2048](/web/2048/01-setup)
 - [Styling and the Grid](/web/2048/02-grid)
 
-In a presentation, use the arrow keys to navigate and press P to open presenter view.
+In a presentation, use the arrow keys to navigate, press F to go into fullscreen and press P to open presenter view.
 
 Powered by [Decode](http://getdecoded.org)
